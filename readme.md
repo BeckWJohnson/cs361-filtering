@@ -28,19 +28,19 @@ The microservice will return the filteredData of the data.txt file with the keys
 # Example Code
 Use this example code to send the keys to the microservice and recieve the data filtered by the keys from the microservice:
 
-#Create ZeroMQ context
-    context = zmq.Context()
-#Create REQ (request) socket
-    socket = context.socket(zmq.REQ)
-    socket.bind("tcp://*:5554")
-#Send the keys to filter data request
-    keys = [“TODO”, “OVERDUE”]
-    for k in keys:
-#Send each key 
-        socket.send_string(key)
-#Receive each thing that was filtered
-        response = socket.recv_string() 
-        print(f”Received: {response}”)
+    #Create ZeroMQ context
+        context = zmq.Context()
+    #Create REQ (request) socket
+        socket = context.socket(zmq.REQ)
+        socket.bind("tcp://*:5554")
+    #Send the keys to filter data request
+        keys = [“TODO”, “OVERDUE”]
+        for k in keys:
+    #Send each key 
+            socket.send_string(key)
+    #Receive each thing that was filtered
+            response = socket.recv_string() 
+            print(f”Received: {response}”)
 
 # UML Diagram:
 ![alt text](<Filtering Microservice UML Diagram.drawio.png>)
