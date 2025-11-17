@@ -1,0 +1,7 @@
+[
+    {"task": "Wash Hair", "Key": "TODO"},
+    {"task": "Cook Dinner", "Key": "DONE"},
+    {"task": "Fix Bike", "Key": "OVERDUE"},
+    {"task": "Go Shopping", "Key": "TODO"},
+    {"task": "Go to Work", "Key": "DONE"}
+]
