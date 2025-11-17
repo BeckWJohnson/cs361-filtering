@@ -1,4 +1,4 @@
-# cs361-sorting
+# cs361-filtering
 Created for CS 361 Software Engineering 1
 
 To Use:
