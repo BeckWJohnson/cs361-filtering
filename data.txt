@@ -1,7 +1,7 @@
 [
-    {"task": "Wash Hair", "Key": "TODO"},
-    {"task": "Cook Dinner", "Key": "DONE"},
-    {"task": "Fix Bike", "Key": "OVERDUE"},
-    {"task": "Go Shopping", "Key": "TODO"},
-    {"task": "Go to Work", "Key": "DONE"}
+    {"task": "Wash Hair", "key": "TODO"},
+    {"task": "Cook Dinner", "key": "DONE"},
+    {"task": "Fix Bike", "key": "OVERDUE"},
+    {"task": "Go Shopping", "key": "TODO"},
+    {"task": "Go to Work", "key": "DONE"}
 ]

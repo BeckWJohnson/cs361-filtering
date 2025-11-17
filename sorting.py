@@ -2,10 +2,9 @@ import zmq
 import json
 
 def filterByKey(data, keyphrases):
-    results = [item for item in data if any(k in keyphrases for k in item["key"])] # filters data using the key(s)
-    if not results:
-        return []
-    return results
+    if isinstance(keyphrases, str):
+        keyphrases = [keyphrases] # filters data using the key(s)
+    return [item for item in data if item["key"] in keyphrases]
 
 def main():
     context = zmq.Context()
@@ -15,7 +14,7 @@ def main():
     print(f"Client connected, receiving data from server")
 
     while True:
-        keyphrases = socket.recv() #the way the user wants to sort the data
+        keyphrases = socket.recv_string() #the way the user wants to sort the data
         try:
             with open("data.txt", "r") as f:
                 data = json.load(f) #gets the unfiltered data
@@ -24,16 +23,15 @@ def main():
             data = []
         except json.JSONDecodeError:
             print("Error: data.txt is not valid JSON")
-            data = []
-
-        if data == []:
+            data = []       
+        if not data:
             socket.send_string("Data file could not open please try again later")
         else:
             filteredData = filterByKey(data, keyphrases)
-            if(filteredData == []):
+            if not filteredData:
                 socket.send_string("No items were found using the given filters")
             else:
-                socket.send_string("filtered data: %s\nKeys Used: %s\n", filteredData, keyphrases) #sends the data to the server/user
+                socket.send_string(f"filtered data: {filteredData}\nKeys Used: {keyphrases}")#sends the data to the server/user
 
 if __name__ == "__main__":
     main()
